@@ -1,6 +1,6 @@
-// const { Sequelize } = require("sequelize");
-import Sequelize from "sequelize";
-import mysql2 from "mysql2";
+let {Sequelize}=require("sequelize")
+// import mysql2 from "mysql2";
+let {mysql2}=require('mysql2')
 require("dotenv").config();
 
 const sequelize = new Sequelize(

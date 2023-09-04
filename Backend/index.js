@@ -4,6 +4,9 @@ const { Student } = require("./model/student.model");
 const jwt = require("jsonwebtoken");
 const { Sequelize } = require("sequelize");
 const app = express();
+const { studentRouter } = require("./routes/student.route");
+const { courseRouter } = require("./routes/course.route");
+const { instructorRouter } = require("./routes/instructor.route");
 
 app.use(express.json());
 app.use(require("cors")());
@@ -18,6 +21,9 @@ app.get("/", async (req, res) => {
 });
 
 app.use("", studentRouter);
+app.use("", courseRouter);
+app.use("",instructorRouter);
+
 
 sequelize
   .sync()
