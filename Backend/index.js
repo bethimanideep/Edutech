@@ -7,6 +7,9 @@ const app = express();
 const { studentRouter } = require("./routes/student.route");
 const { courseRouter } = require("./routes/course.route");
 const { instructorRouter } = require("./routes/instructor.route");
+const { Department } = require("./model/department.model");
+const { departmentRouter } = require("./routes/department.route");
+
 
 app.use(express.json());
 app.use(require("cors")());
@@ -23,6 +26,8 @@ app.get("/", async (req, res) => {
 app.use("", studentRouter);
 app.use("", courseRouter);
 app.use("",instructorRouter);
+app.use("", departmentRouter);
+
 
 
 sequelize
