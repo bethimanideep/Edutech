@@ -1,24 +1,22 @@
-import { Component,OnInit,ChangeDetectorRef  } from '@angular/core';
+import { Component,ChangeDetectorRef,OnInit } from '@angular/core';
 import { GlobalService } from '../global.service';
-import { ActivatedRoute, Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  selector: 'app-instructor-navbar',
+  templateUrl: './instructor-navbar.component.html',
+  styleUrls: ['./instructor-navbar.component.css']
 })
-export class NavbarComponent implements OnInit {
-    
-  isLogin: boolean = false;
-  items : any;
-  constructor(public globalService: GlobalService,private cd: ChangeDetectorRef,private route: ActivatedRoute,private router : Router) {}
+export class InstructorNavbarComponent implements OnInit{
+
+  items : any ;
+  constructor(public globalService: GlobalService,private cd: ChangeDetectorRef,private router: Router) {}
+
 
   ngOnInit(): void {
-    this.isLogin = this.globalService.isStudentLogin;
-
     this.items = [
       {
-        label: this.globalService.getStudentLoginDetails()?.name,
+        label: this.globalService.getInstructorLoginDetails()?.name,
         icon: '',
         items: [
             {
@@ -37,19 +35,19 @@ export class NavbarComponent implements OnInit {
                 label: 'Sign Out',
                 icon: 'pi pi-fw pi-sign-out',
                 command : ()=>{
-                  this.globalService.logout()
-                  this.router.navigate(['/'])
+                  this.globalService.instructorlogout()
+                  this.router.navigate(['/instructor'])
                 }
                 
             }
         ]
     },
     ]
-
+  
      this.globalService.loginStatus$.subscribe(()=>{
        this.items = [
          {
-           label: this.globalService.getStudentLoginDetails()?.name,
+           label: this.globalService.getInstructorLoginDetails()?.name,
            icon: '',
            items: [
                {
@@ -68,21 +66,21 @@ export class NavbarComponent implements OnInit {
                    label: 'Sign Out',
                    icon: 'pi pi-fw pi-sign-out',
                    command : ()=>{
-                    this.globalService.logout()
-                    this.router.navigate(['/'])
+                    this.globalService.instructorlogout()
+                    this.router.navigate(['/instructor'])
                   }
                    
                }
            ]
        },
        ]
-
+  
      })
     
   }
 
   getFirstLetter(): string {
-    const name = this.globalService.getStudentLoginDetails()?.name || '';
+    const name = this.globalService.getInstructorLoginDetails()?.name || '';
     return name.charAt(0).toUpperCase();
   }
 

@@ -96,19 +96,14 @@
   }
 
   ::ng-deep .custom-menubar {
-    background-color: rgb(246, 241, 241);
+    background-color: #6558d3;
     border: none;
    color: white;
-   margin-right: 20px;
+   
     font-weight: 400;
     
   }
 
   ::ng-deep .custom-menubar>span {
     color: #fff; /* Change to the desired text color */
-   } 
-
-  
-
-/* styles.css (or your component-specific CSS file) */
-
+  }
