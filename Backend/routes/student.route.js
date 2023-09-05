@@ -2,7 +2,7 @@ const express = require("express");
 const { Student } = require("../model/student.model");
 const studentRouter = express.Router();
 const jwt = require("jsonwebtoken");
-const bcrypt = require('bcrpyt');
+const bcrypt = require("bcrypt");
 require("dotenv").config();
 const { authentication } = require("../middlewares/authentication.middleware");
 const { authorize } = require("../middlewares/authorization.middleware");
